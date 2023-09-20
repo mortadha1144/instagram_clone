@@ -2,10 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:instagram_clone/state/auth/constants/constants.dart';
-import 'package:instagram_clone/state/auth/constants/models/auth_result.dart';
+import 'package:instagram_clone/state/auth/models/auth_result.dart';
 import 'package:instagram_clone/state/posts/typedefs/user_id.dart';
 
 class Authenticator {
+  const Authenticator();
   UserId? get userId => FirebaseAuth.instance.currentUser?.uid;
   bool get isAlreadyLoggedIn => userId != null;
   String get displayName =>
