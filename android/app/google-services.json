@@ -12,7 +12,12 @@
           "package_name": "com.mortadha.instagram_clone"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "861806536990-gl7gubrtplvuptfvdu0b3sel8eub8cp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBBu-x8O7v9iXHB2ynNwHvTz-Ay5TDJUxk"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861806536990-gl7gubrtplvuptfvdu0b3sel8eub8cp4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "861806536990-im9901atc62lr3tvsftpcpbnhngr8h5l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mortadha.instagramClone"
+              }
+            }
+          ]
         }
       }
     }
