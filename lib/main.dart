@@ -6,6 +6,7 @@ import 'package:instagram_clone/state/auth/providers/is_logged_in_provider.dart'
 import 'firebase_options.dart';
 import 'state/providers/is_loading_provider.dart';
 import 'views/components/loading/loading_screen.dart';
+import 'views/login/login_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -83,33 +84,5 @@ class MainView extends StatelessWidget {
             child: const Text('Log Out'),
           ),
         ));
-  }
-}
-
-// for when you are not logged in
-class LoginView extends ConsumerWidget {
-  const LoginView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login View'),
-      ),
-      body: Column(
-        children: [
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-            child: const Text('Sign In With Google'),
-          ),
-          TextButton(
-            onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
-            child: const Text('Sign In With Facebook'),
-          ),
-        ],
-      ),
-    );
   }
 }
