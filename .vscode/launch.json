@@ -4,19 +4,21 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
-            "name": "instagram_clone (depug mode)",
+
+            "name": "run app (depug mode)",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "instagram_clone (profile mode)",
+            "name": "run app (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "instagram_clone (release mode)",
+            "name": "run app (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

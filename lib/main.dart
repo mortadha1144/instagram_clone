@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:instagram_clone/state/auth/providers/auth_state_provider.dart';
 import 'package:instagram_clone/state/auth/providers/is_logged_in_provider.dart';
 import 'firebase_options.dart';
+import 'state/auth/providers/auth_state_provider.dart';
 import 'state/providers/is_loading_provider.dart';
 import 'views/components/loading/loading_screen.dart';
 import 'views/login/login_view.dart';
@@ -79,10 +79,13 @@ class MainView extends StatelessWidget {
           title: const Text('Main View'),
         ),
         body: Consumer(
-          builder: (_, ref, child) => TextButton(
-            onPressed: ref.read(authStateProvider.notifier).logOut,
-            child: const Text('Log Out'),
-          ),
+          builder: (_, ref, child) {
+            
+              return TextButton(
+              onPressed: ref.read(authStateProvider.notifier).logOut,
+              child: const Text('Log Out'),
+            );
+          },
         ));
   }
 }
