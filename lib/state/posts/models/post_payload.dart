@@ -18,7 +18,7 @@ class PostPayload extends MapView<String, dynamic> {
     required double aspectRatio,
     required String thumbnailStorageId,
     required String originalFileStorageId,
-    required Map<PostSetting, bool> postsetting,
+    required Map<PostSetting, bool> postsettings,
   }) : super(
           {
             PostKey.userId: userId,
@@ -32,7 +32,7 @@ class PostPayload extends MapView<String, dynamic> {
             PostKey.thumbnailStorageId: thumbnailStorageId,
             PostKey.originalFileStorageId: originalFileStorageId,
             PostKey.postSettings: {
-              for (final postSetting in postsetting.entries)
+              for (final postSetting in postsettings.entries)
                 postSetting.key.storageKey: postSetting.value,
             },
           },
