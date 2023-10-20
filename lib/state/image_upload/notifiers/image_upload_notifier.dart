@@ -15,7 +15,6 @@ import 'package:instagram_clone/state/posts/typedefs/user_id.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:uuid/uuid.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
 import '../constants/constants.dart';
 
 class ImageUploadNotifier extends StateNotifier<IsLoading> {
