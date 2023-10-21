@@ -8,6 +8,7 @@ import 'package:instagram_clone/state/image_upload/models/file_type.dart';
 import 'package:instagram_clone/state/image_upload/models/thumbnail_request.dart';
 import 'package:instagram_clone/state/image_upload/notifiers/image_upload_notifier.dart';
 import 'package:instagram_clone/state/image_upload/providers/image_uploader_provider.dart';
+import 'package:instagram_clone/state/post_settings/models/post_setting.dart';
 import 'package:instagram_clone/state/post_settings/providers/post_settings_provider.dart';
 import 'package:instagram_clone/views/components/file_thumbnail_view.dart';
 import 'package:instagram_clone/views/constants/strings.dart';
@@ -33,7 +34,7 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
       file: widget.fileToPost,
       fileType: widget.fileType,
     );
-    final postSetting = ref.watch(postSettingProvider);
+    final postSettings = ref.watch(postSettingProvider);
     final postController = useTextEditingController();
     final isPostButtonEnabled = useState<bool>(false);
     useEffect(
@@ -66,7 +67,7 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
                           file: widget.fileToPost,
                           fileType: widget.fileType,
                           message: message,
-                          postSettings: postSetting,
+                          postSettings: postSettings,
                           userId: userId,
                         );
 
@@ -84,6 +85,32 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
             // thumbnail
             FileThumbnailView(
               thumbnailRequest: thumbnailRequest,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                  labelText: Strings.pleaseWriteYourMessageHere,
+                ),
+                autofocus: true,
+                maxLines: null,
+                controller: postController,
+              ),
+            ),
+            ...PostSetting.values.map(
+              (postSetting) => ListTile(
+                title: Text(postSetting.title),
+                subtitle: Text(postSetting.description),
+                trailing: Switch(
+                  value: postSettings[postSetting] ?? false,
+                  onChanged: (isOn) {
+                    ref.read(postSettingProvider.notifier).setSetting(
+                          postSetting,
+                          isOn,
+                        );
+                  },
+                ),
+              ),
             ),
           ],
         ),
