@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,15 +49,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC2QfTqmWqkYEYyxpgI0tMSpY5a7f9CgZM',
-    appId: '1:861806536990:web:e48dc7c6602c1482e6410f',
-    messagingSenderId: '861806536990',
-    projectId: 'riverpod-course-vandad',
-    authDomain: 'riverpod-course-vandad.firebaseapp.com',
-    storageBucket: 'riverpod-course-vandad.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBBu-x8O7v9iXHB2ynNwHvTz-Ay5TDJUxk',
     appId: '1:861806536990:android:ce76f23e8f7bfb8fe6410f',
@@ -66,15 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '861806536990',
     projectId: 'riverpod-course-vandad',
     storageBucket: 'riverpod-course-vandad.appspot.com',
+    androidClientId: '861806536990-girij5918gedc2asobefpvcr5utjhhpe.apps.googleusercontent.com',
+    iosClientId: '861806536990-im9901atc62lr3tvsftpcpbnhngr8h5l.apps.googleusercontent.com',
     iosBundleId: 'com.mortadha.instagramClone',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyADXK6bAAi9sXdynN1dTQD___XdSY9MmGA',
-    appId: '1:861806536990:ios:7e01bf2c4f10c1cee6410f',
-    messagingSenderId: '861806536990',
-    projectId: 'riverpod-course-vandad',
-    storageBucket: 'riverpod-course-vandad.appspot.com',
-    iosBundleId: 'com.mortadha.instagramClone.RunnerTests',
   );
 }
