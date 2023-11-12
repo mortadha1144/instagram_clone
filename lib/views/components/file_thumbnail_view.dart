@@ -14,7 +14,7 @@ class FileThumbnailView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-   final thumbnail = ref.watch(thumbnailProvider(thumbnailRequest));
+    final thumbnail = ref.watch(thumbnailProvider(thumbnailRequest));
     return thumbnail.when(
       data: (imageWithAspectRatio) {
         return AspectRatio(
@@ -23,7 +23,7 @@ class FileThumbnailView extends ConsumerWidget {
         );
       },
       loading: () => const LoadingAnimtionView(),
-      error: (error, stackTrace) => const SmallErrorAnimtionView(),
+      error: (error, stackTrace) => const SmallErrorAnimationView(),
     );
   }
 }

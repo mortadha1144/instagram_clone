@@ -17,7 +17,7 @@ final userPostsProvider = StreamProvider<Iterable<Post>>((ref) {
   };
 
   final sub = FirebaseFirestore.instance
-      .collection(FirebaseCollectiondName.posts)
+      .collection(FirebaseCollectionName.posts)
       .orderBy(
         FirebaseFieldName.createdAt,
         descending: true,

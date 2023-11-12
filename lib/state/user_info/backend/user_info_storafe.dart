@@ -18,7 +18,7 @@ class UserInfoStorage {
     try {
       final userInfo = await FirebaseFirestore.instance
           .collection(
-            FirebaseCollectiondName.users,
+            FirebaseCollectionName.users,
           )
           .where(
             FirebaseFieldName.userId,
@@ -45,10 +45,10 @@ class UserInfoStorage {
 
       await FirebaseFirestore.instance
           .collection(
-            FirebaseCollectiondName.users,
+            FirebaseCollectionName.users,
           )
           .add(payload);
-        return true;
+      return true;
     } catch (e) {
       return false;
     }

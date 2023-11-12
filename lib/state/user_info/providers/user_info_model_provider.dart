@@ -12,7 +12,7 @@ final userInfoModelProvider = StreamProvider.family
   final controller = StreamController<UserInfoModel>();
 
   final sub = FirebaseFirestore.instance
-      .collection(FirebaseCollectiondName.users)
+      .collection(FirebaseCollectionName.users)
       .where(
         FirebaseFieldName.userId,
         isEqualTo: userId,

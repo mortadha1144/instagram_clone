@@ -30,7 +30,7 @@ class UserInfoModel extends MapView<String, String?> {
           email: json[FirebaseFieldName.email],
         );
 
-  // makw equal to hashcode
+  // make equal to hashcode
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

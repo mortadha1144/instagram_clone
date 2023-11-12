@@ -74,7 +74,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
     final thumbnailRef = FirebaseStorage.instance
         .ref()
         .child(userId)
-        .child(FirebaseCollectiondName.thumbnails)
+        .child(FirebaseCollectionName.thumbnails)
         .child(fileName);
 
     final originalFileRef = FirebaseStorage.instance
@@ -106,7 +106,7 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
         postsettings: postSettings,
       );
       await FirebaseFirestore.instance
-          .collection(FirebaseCollectiondName.posts)
+          .collection(FirebaseCollectionName.posts)
           .add(postPayLoad);
       return true;
     } catch (_) {
