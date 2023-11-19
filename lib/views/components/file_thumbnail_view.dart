@@ -22,7 +22,7 @@ class FileThumbnailView extends ConsumerWidget {
           child: imageWithAspectRatio.image,
         );
       },
-      loading: () => const LoadingAnimtionView(),
+      loading: () => const LoadingAnimationView(),
       error: (error, stackTrace) => const SmallErrorAnimationView(),
     );
   }

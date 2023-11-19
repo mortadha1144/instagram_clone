@@ -22,12 +22,13 @@ class UserPostsView extends ConsumerWidget {
       child: posts.when(
         data: (posts) {
           if (posts.isEmpty) {
-            return const EmptyContentWithTextAnimationView(text: Strings.youHaveNoPosts);
+            return const EmptyContentWithTextAnimationView(
+                text: Strings.youHaveNoPosts);
           }
           return PostsGridView(posts: posts);
         },
-        error: (error, stackTrace) =>const ErrorAnimtionView(),
-        loading: () => const LoadingAnimtionView(),
+        error: (error, stackTrace) => const ErrorAnimationView(),
+        loading: () => const LoadingAnimationView(),
       ),
     );
   }
