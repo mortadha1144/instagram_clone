@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:instagram_clone/state/auth/providers/is_logged_in_provider.dart';
 import 'package:instagram_clone/views/main/main_view.dart';
 import 'firebase_options.dart';
-import 'state/auth/providers/auth_state_provider.dart';
 import 'state/providers/is_loading_provider.dart';
 import 'views/components/loading/loading_screen.dart';
 import 'views/login/login_view.dart';
