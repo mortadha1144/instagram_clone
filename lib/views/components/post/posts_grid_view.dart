@@ -27,7 +27,6 @@ class PostsGridView extends StatelessWidget {
         return PostThumbnailView(
           post: post,
           onTap: () {
-            // TODO: Navigate to post details view
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => PostDetailsView(
