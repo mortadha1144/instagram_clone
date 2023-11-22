@@ -15,59 +15,56 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading> {
   Future<bool> deletePost({
     required Post post,
   }) async {
-    isLoading = true;
-
     try {
+      isLoading = true;
       // delete the post's thumbnail
 
-    await FirebaseStorage.instance
-        .ref()
-        .child(post.postId)
-        .child(FirebaseCollectionName.thumbnails)
-        .child(post.thumbnailStorageId)
-        .delete();
+      await FirebaseStorage.instance
+          .ref()
+          .child(post.postId)
+          .child(FirebaseCollectionName.thumbnails)
+          .child(post.thumbnailStorageId)
+          .delete();
 
-    // delete the post's original (video or image)
-    await FirebaseStorage.instance
-        .ref()
-        .child(post.postId)
-        .child(post.fileType.collectionName)
-        .child(post.originalFileStorageId)
-        .delete();
+      // delete the post's original (video or image)
+      await FirebaseStorage.instance
+          .ref()
+          .child(post.postId)
+          .child(post.fileType.collectionName)
+          .child(post.originalFileStorageId)
+          .delete();
 
-    // delete all comments associated with the post
+      // delete all comments associated with the post
 
-    await _deleteAllDocuments(
-      collectionName: FirebaseCollectionName.comments,
-      postId: post.postId,
-    );
+      await _deleteAllDocuments(
+        collectionName: FirebaseCollectionName.comments,
+        postId: post.postId,
+      );
 
-    // delete all like associated with the post
+      // delete all like associated with the post
 
-    await _deleteAllDocuments(
-      collectionName: FirebaseCollectionName.likes,
-      postId: post.postId,
-    );
+      await _deleteAllDocuments(
+        collectionName: FirebaseCollectionName.likes,
+        postId: post.postId,
+      );
 
-    // finally delete the post itself 
+      // finally delete the post itself
 
-    final postInCollection = await FirebaseFirestore.instance
-        .collection(FirebaseCollectionName.posts)
-        .where(FirebaseFieldName.postId, isEqualTo: post.postId)
-        .limit(1)
-        .get();
+      final postInCollection = await FirebaseFirestore.instance
+          .collection(FirebaseCollectionName.posts)
+          .where(FieldPath.documentId, isEqualTo: post.postId)
+          .limit(1)
+          .get();
 
-        for (final post in postInCollection.docs) {
-          await post.reference.delete();
-        }
+      for (final post in postInCollection.docs) {
+        await post.reference.delete();
+      }
       return true;
     } catch (_) {
       return false;
     } finally {
       isLoading = false;
     }
-
-    
   }
 
   Future<void> _deleteAllDocuments({
