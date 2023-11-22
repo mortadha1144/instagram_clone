@@ -21,7 +21,7 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading> {
 
       await FirebaseStorage.instance
           .ref()
-          .child(post.postId)
+          .child(post.userId)
           .child(FirebaseCollectionName.thumbnails)
           .child(post.thumbnailStorageId)
           .delete();
@@ -29,7 +29,7 @@ class DeletePostStateNotifier extends StateNotifier<IsLoading> {
       // delete the post's original (video or image)
       await FirebaseStorage.instance
           .ref()
-          .child(post.postId)
+          .child(post.userId)
           .child(post.fileType.collectionName)
           .child(post.originalFileStorageId)
           .delete();
