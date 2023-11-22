@@ -87,10 +87,10 @@ class ImageUploadNotifier extends StateNotifier<IsLoading> {
       // upload the thumbnail
       final thumbnailUploadTask =
           await thumbnailRef.putData(thumbnailUint8List);
-      final thumbnailStorageId = thumbnailUploadTask.ref.fullPath;
+      final thumbnailStorageId = thumbnailUploadTask.ref.name;
       // upload the original file
       final originalFileUploadTask = await originalFileRef.putFile(file);
-      final originalFileStorageId = originalFileUploadTask.ref.fullPath;
+      final originalFileStorageId = originalFileUploadTask.ref.name;
 
       // upload the post
       final postPayLoad = PostPayload(
